@@ -29,3 +29,23 @@
   </article>
 
 </section>
+
+<section class="products-review">
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Ratings</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @review.each do |review| %>
+          <tr>
+          <td><%= review.rating %></td>
+          <td><%= review.description %> -<%= review.user.first_name %> <%= review.user.last_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+
+</section>
