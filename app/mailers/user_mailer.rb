@@ -1,9 +1,8 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@example.com'
  
-  def welcome_email(user)
-    @user = user
+  def notify_user(order)
+    @order = order
     @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @order.email, subject: "Jungle order #: #{order.id}")
   end
 end
