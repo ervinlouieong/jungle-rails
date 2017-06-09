@@ -48,4 +48,19 @@
       </tbody>
   </table>
 
+
+  <%= form_for([@product, @new_review]) do |form| %>
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.select :rating, [[1], [2], [3], [4], [5]] %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :review_description %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
 </section>
