@@ -9,7 +9,9 @@
 <body>
 
   <%= render 'layouts/top_nav' %>
-
+      <% if current_user %>
+        <h3 class="welcome pull-right font-weight-bold">Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!</h3>
+      <% end %>
   <main class="container">
     <%= yield %>
   </main>

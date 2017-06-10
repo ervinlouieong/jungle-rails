@@ -32,19 +32,19 @@
 
 <section class="products-review">
   <h2>Reviews:</h2>
-  <table class="table table-bordered">
+  <table class="table table-hover">
       <thead>
         <tr>
-          <th>Ratings</th>
-          <th>Description</th>
+          <th class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center">Ratings</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @review.each do |review| %>
           <tr>
-            <td><%= review.rating %></td>
+            <td class="col-md-1 col-lg-1 col-sm-1 col-xs-1 text-center ratings"><%= review.rating %></td>
             <td>
-            <%= review.description %> -<%= review.user.first_name %> <%= review.user.last_name %>
+            <%= review.description %> <br />-<%= review.user.first_name %> <%= review.user.last_name %>
             <% if current_user && current_user.id == review.user_id %>
               <%= link_to fa_icon('trash'), [review.product, review], class: 'btn btn-sm btn-danger pull-right', method: :delete, data: { confirm: "Are you sure?" } %>
             <% end %>
@@ -54,21 +54,25 @@
       </tbody>
   </table>
 
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
   <% if current_user %>
   <h2>Post Review:</h2>
     <%= form_for([@product, @new_review]) do |form| %>
-      <div class="field">
+      <div class="form-group">
         <%= form.label :rating %>
-        <%= form.select :rating, [[1], [2], [3], [4], [5]] %>
+        <%= form.select :rating, [[1], [2], [3], [4], [5]], { include_blank: true }, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="form-group">
         <%= form.label :description %>
-        <%= form.text_field :description, id: :review_description %>
+        <%= form.text_field :description, class: 'form-control' %>
       </div>
       <div class="actions">
-        <%= form.submit %>
+        <%= form.submit 'Submit', class: 'btn btn-primary'%>
       </div>
     <% end %>
   <% end %>
+    </div>
+  </div>
 
 </section>
