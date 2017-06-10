@@ -1,13 +1,5 @@
 <article class="product">
 
-  <% sum = 0 %>
-  <% product.reviews.each do |a| %>
-  <% sum = sum + a.rating %>
-  <% end %>
-  <% if product.reviews.size != 0 %>
-    <p>average rating: <%= sum/product.reviews.size %> </p>
-  <% end %>
-
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
@@ -17,6 +9,18 @@
   <p class="description">
     <%= product.description %>
   </p>
+  <section class="average_rating">
+    <% sum = 0 %>
+    <% product.reviews.each do |a| %>
+    <% sum = sum + a.rating %>
+    <% end %>
+    <% if product.reviews.size != 0 %>
+      <em>Avg Rating: </em>
+      <strong><%= sum/product.reviews.size %></strong>
+    <% else %>
+      <em>No rating yet.</em>
+    <% end %>
+  </section>
   <footer class="actions">
     <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
