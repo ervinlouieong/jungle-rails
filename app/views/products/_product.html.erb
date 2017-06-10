@@ -1,4 +1,13 @@
 <article class="product">
+
+  <% sum = 0 %>
+  <% product.reviews.each do |a| %>
+  <% sum = sum + a.rating %>
+  <% end %>
+  <% if product.reviews.size != 0 %>
+    <p>average rating: <%= sum/product.reviews.size %> </p>
+  <% end %>
+
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
