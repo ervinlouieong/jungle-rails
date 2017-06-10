@@ -6,7 +6,10 @@
   <% @orders.each do |order| %>
     <% if current_user && current_user.email == order.email %>
       <div class="orders">
-        <li><%= link_to order.id, order %></li>
+        <h3>
+        Order#: <%= link_to order.id, order %></br>
+        Date: <%= order.created_at %>
+        </h3>
       </div>
     <% end %>
   <% end %>
