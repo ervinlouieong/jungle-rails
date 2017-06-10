@@ -11,4 +11,11 @@
     <% end %>
   <% end %>
 
+  <% if !(@orders_emails.include? current_user.email)  %>
+    <div class="jumbotron">
+      <h4>You have no orders yet.</h4>
+      <h4>You can go back to <%= link_to 'Home', :root %> and check the products. Thank you.</h4>
+    </div>
+  <% end %>
+
 </section>

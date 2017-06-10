@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @orders_emails = Order.pluck(:email)
   end
 
   def show
