@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_filter :authorize, :only => [:create, :destroy]
+
   def create
     @review = Review.new(review_params)
     @review.product_id = params[:product_id]
@@ -10,6 +12,12 @@ class ReviewsController < ApplicationController
     else
       redirect_to @review.product, notice: 'Failed to create the review'
     end
+  end
+
+  def destroy
+    @review = Review.find params[:id]
+    @review.destroy
+    redirect_to :back, notice: 'Review deleted!'
   end
 
   private
