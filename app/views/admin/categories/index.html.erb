@@ -18,8 +18,8 @@
       </thead>
       <tbody>
         <% Category.all.each do |category| %>
-        <table class="categories-list">
-         <li><%=link_to category.name, category %></li>
+        <table>
+         <h4 class="cateories-list"><li><%=link_to category.name, category %></li></h4>
         </table>
         <% end %> 
       </tbody>
